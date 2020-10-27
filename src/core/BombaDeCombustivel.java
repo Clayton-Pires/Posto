@@ -1,31 +1,39 @@
 package core;
 
-public class bomba {
+public class BombaDeCombustivel {
 	private String nome;
 	private double precoLitro;
 	private double qtdeLitros;
 	private double totalPagar;
-
-	public bomba(String nome, double precoLitro, double qtdeLitros, double totalPagar) {
-		super();
+	
+	public BombaDeCombustivel(String nome, double precoLitro) {
 		this.nome = nome;
 		this.precoLitro = precoLitro;
-		this.qtdeLitros = qtdeLitros;
-		this.totalPagar = totalPagar;
 	}
-
-	public void abastecerPorLitro(double litros) {
+	
+   public void abastecerPorLitros(double litros) {
 		this.qtdeLitros = litros;
 		this.totalPagar = this.qtdeLitros * this.precoLitro;
 	}
-
+	
 	public void abastecerPorValor(double valor) {
 		this.totalPagar = valor;
-		this.totalPagar = this.totalPagar / this.precoLitro;
+		this.qtdeLitros = this.totalPagar / this.precoLitro;
 	}
 	
-	
-	
+	public String exibirRecibo() {
+		String recibo;
+		recibo = "========================================\n"+
+		         "     IsidroCorp Gas & Energy            \n"+
+				 "----------------------------------------\n"+
+		         " Combustivel   : "+this.nome+"\n"+
+				 " Preço Litro   : R$ "+String.format("%.3f", this.precoLitro)+"\n"+
+		         " Quantidade    : "+String.format("%.3f", this.qtdeLitros)+"\n"+
+				 " Total a Pagar : R$ "+String.format("%.2f", this.totalPagar)+"\n"+
+		         "----------------------------------------";
+		return recibo;  
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -57,5 +65,9 @@ public class bomba {
 	public void setTotalPagar(double totalPagar) {
 		this.totalPagar = totalPagar;
 	}
+	
+	
+	
+	
 
 }
